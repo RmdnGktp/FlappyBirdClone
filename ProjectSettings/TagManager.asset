@@ -50,5 +50,8 @@ TagManager:
   - name: Bird
     uniqueID: 1677656559
     locked: 0
+  - name: Floor
+    uniqueID: 1022444497
+    locked: 0
   m_RenderingLayers:
   - Default
