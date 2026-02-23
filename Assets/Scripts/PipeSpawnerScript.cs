@@ -10,16 +10,16 @@ public class PipeSpawnerScript : MonoBehaviour
     
     void Start()
     {
-        startSpawn();
+       // startSpawn();
         
     }
 
-    void startSpawn()
+    public void startSpawn()
     {
         InvokeRepeating ("spawnPipe", 0f, spawnRate);
     }
 
-    void cancelSpawn()
+    public void cancelSpawn()
     {
         CancelInvoke();
     }

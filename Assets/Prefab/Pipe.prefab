@@ -10,8 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2557136697181637974}
   - component: {fileID: 5555817532763015590}
-  - component: {fileID: 6406049635414547225}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Middle Pipe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,18 +78,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.37803662, y: 1.8005978}
   m_EdgeRadius: 0
---- !u!114 &6406049635414547225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 282576079414945057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2aad73d12f61194bb0db9ad7829aaaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
 --- !u!1 &3027214866258137797
 GameObject:
   m_ObjectHideFlags: 0
