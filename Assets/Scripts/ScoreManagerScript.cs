@@ -5,13 +5,12 @@ using TMPro;
 public class ScoreManagerScript : MonoBehaviour
 {
     int playerScore = 0;
-    [SerializeField] TextMeshProUGUI EndGameScoreText;
-    int endgameScore;
-    [SerializeField] TextMeshProUGUI BestScoreText;
     int bestScore = 0;
     [SerializeField] Sprite[] numberSprites; 
     [SerializeField] GameObject digitPrefab;
     [SerializeField] Transform scoreContainer;
+    [SerializeField] Transform endGameScoreContainer;
+    [SerializeField] Transform bestScoreContainer;
     
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -32,19 +31,18 @@ public class ScoreManagerScript : MonoBehaviour
 
     public void GameOverScore ()
     {
-        endgameScore = playerScore;
-        EndGameScoreText.text = endgameScore.ToString();
-
+        UpdateEndGameScoreVisual (playerScore);
         bestScore = PlayerPrefs.GetInt("bestScore",0);
-        if (endgameScore > bestScore)
+
+        if (playerScore > bestScore)
         {
             PlayerPrefs.SetInt("bestScore", playerScore);
             PlayerPrefs.Save();
-            BestScoreText.text = playerScore.ToString();
+            UpdateBestScoreVisual(playerScore);
         }
         else
         {
-            BestScoreText.text = bestScore.ToString();
+            UpdateBestScoreVisual(bestScore);
         }
         
     }
@@ -63,6 +61,40 @@ public class ScoreManagerScript : MonoBehaviour
            GameObject newDigit = Instantiate(digitPrefab, scoreContainer);
            int index = digit - '0';
            newDigit.GetComponent<Image>().sprite = numberSprites[index];
+        }
+    }
+
+    void UpdateEndGameScoreVisual (int score)
+    {
+        foreach (Transform child in endGameScoreContainer)
+        {
+            Destroy(child.gameObject);
+        }
+
+        string scoreString = score.ToString();
+
+        foreach (char digit in scoreString)
+        {
+            GameObject newDigit = Instantiate (digitPrefab, endGameScoreContainer);
+            int index = digit - '0';
+            newDigit.GetComponent<Image>().sprite = numberSprites[index];
+        }
+    }
+
+    void UpdateBestScoreVisual (int score)
+    {
+        foreach (Transform child in bestScoreContainer)
+        {
+            Destroy(child.gameObject);
+        }
+
+        string scoreString = score.ToString();
+
+        foreach(char digit in scoreString)
+        {
+            GameObject newDigit = Instantiate (digitPrefab, bestScoreContainer);
+            int index = digit -'0';
+            newDigit.GetComponent<Image>().sprite = numberSprites[index];
         }
     }
 }
