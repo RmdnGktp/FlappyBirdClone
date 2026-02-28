@@ -12,8 +12,9 @@ public class BirdScript : MonoBehaviour
     [SerializeField] GameObject gameOverScene;
     [SerializeField] PipeSpawnerScript spawnPipe;
     public bool gameStarted = false;
-    [SerializeField] GameObject startScene;
+    [SerializeField] GameObject startScripts;
     [SerializeField] float gravityStrength;
+    [SerializeField] ScoreManagerScript scoreManager;
 
 
     void Update()
@@ -37,7 +38,7 @@ public class BirdScript : MonoBehaviour
     void StartGame ()
     {
         gameStarted = true;
-        startScene.SetActive(false);
+        startScripts.SetActive(false);
         myRigidbody.gravityScale = gravityStrength;
         spawnPipe.startSpawn();
         
@@ -54,6 +55,6 @@ public class BirdScript : MonoBehaviour
         gameOverScene.SetActive(true);
         spawnPipe.cancelSpawn();
         gameObject.GetComponent<Animator>().enabled = false;
-
+        scoreManager.GameOverScore();
     }
 }

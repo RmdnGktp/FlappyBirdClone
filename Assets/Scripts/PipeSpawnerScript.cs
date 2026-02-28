@@ -7,13 +7,6 @@ public class PipeSpawnerScript : MonoBehaviour
     [SerializeField] float spawnRate;
     [SerializeField] float heightOffset;
 
-    
-    void Start()
-    {
-       // startSpawn();
-        
-    }
-
     public void startSpawn()
     {
         InvokeRepeating ("spawnPipe", 0f, spawnRate);
