@@ -1,16 +1,18 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
-using System.Data.SqlTypes;
 
 public class ScoreManagerScript : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI scoreText;
     int playerScore = 0;
     [SerializeField] TextMeshProUGUI EndGameScoreText;
     int endgameScore;
     [SerializeField] TextMeshProUGUI BestScoreText;
     int bestScore = 0;
-
+    [SerializeField] Sprite[] numberSprites; 
+    [SerializeField] GameObject digitPrefab;
+    [SerializeField] Transform scoreContainer;
+    
     void OnTriggerEnter2D(Collider2D collision)
     {
         int layerIndex = LayerMask.NameToLayer ("Pipe");
@@ -21,11 +23,11 @@ public class ScoreManagerScript : MonoBehaviour
         }
     }
 
-    // [ContextMenu ("AddScore")]
+    [ContextMenu ("AddScore")]
     public void AddScore (int scoreToAdd)
     {
         playerScore += scoreToAdd;
-        scoreText.text = playerScore.ToString();
+        UpdateScoreVisual(playerScore);
     }
 
     public void GameOverScore ()
@@ -45,5 +47,22 @@ public class ScoreManagerScript : MonoBehaviour
             BestScoreText.text = bestScore.ToString();
         }
         
+    }
+
+    void UpdateScoreVisual(int score)
+    {
+        foreach (Transform child in scoreContainer)
+        {
+           Destroy(child.gameObject);
+        }
+
+        string scoreString = score.ToString();
+
+        foreach (char digit in scoreString)
+        {
+           GameObject newDigit = Instantiate(digitPrefab, scoreContainer);
+           int index = digit - '0';
+           newDigit.GetComponent<Image>().sprite = numberSprites[index];
+        }
     }
 }
