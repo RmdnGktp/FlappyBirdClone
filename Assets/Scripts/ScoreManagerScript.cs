@@ -14,7 +14,8 @@ public class ScoreManagerScript : MonoBehaviour
     [SerializeField] Transform bestScoreContainer;
     [SerializeField] Transform AwardsContainer;
     [SerializeField] GameObject awardPrefab;
-    
+    [SerializeField] SoundManagerScript soundManagerScript;
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         int layerIndex = LayerMask.NameToLayer ("Pipe");
@@ -22,6 +23,7 @@ public class ScoreManagerScript : MonoBehaviour
         if (collision.gameObject.layer == layerIndex)
         {
             AddScore(1);
+            soundManagerScript.playCoin();
         }
     }
 
