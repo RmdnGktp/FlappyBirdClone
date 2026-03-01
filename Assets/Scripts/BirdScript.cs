@@ -16,6 +16,7 @@ public class BirdScript : MonoBehaviour
     [SerializeField] float gravityStrength;
     [SerializeField] ScoreManagerScript scoreManager;
     [SerializeField] GameObject scoreContainer;
+    [SerializeField] SoundManagerScript soundManagerScript;
 
 
     void Update()
@@ -34,6 +35,7 @@ public class BirdScript : MonoBehaviour
     void Jump ()
     {
        myRigidbody.linearVelocity = Vector2.up * flapStrength;
+       soundManagerScript.playFlap();
     }
 
     void StartGame ()
@@ -59,5 +61,6 @@ public class BirdScript : MonoBehaviour
         gameObject.GetComponent<Animator>().enabled = false;
         scoreManager.GameOverScore();
         scoreContainer.SetActive(false);
+        soundManagerScript.playCollision();
     }
 }
