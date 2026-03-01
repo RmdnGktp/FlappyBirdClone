@@ -7,10 +7,13 @@ public class ScoreManagerScript : MonoBehaviour
     int playerScore = 0;
     int bestScore = 0;
     [SerializeField] Sprite[] numberSprites; 
+    [SerializeField] Sprite[] awardsSprites;
     [SerializeField] GameObject digitPrefab;
     [SerializeField] Transform scoreContainer;
     [SerializeField] Transform endGameScoreContainer;
     [SerializeField] Transform bestScoreContainer;
+    [SerializeField] Transform AwardsContainer;
+    [SerializeField] GameObject awardPrefab;
     
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -32,6 +35,7 @@ public class ScoreManagerScript : MonoBehaviour
     public void GameOverScore ()
     {
         UpdateEndGameScoreVisual (playerScore);
+        AwardsManager (playerScore);
         bestScore = PlayerPrefs.GetInt("bestScore",0);
 
         if (playerScore > bestScore)
@@ -96,5 +100,20 @@ public class ScoreManagerScript : MonoBehaviour
             int index = digit -'0';
             newDigit.GetComponent<Image>().sprite = numberSprites[index];
         }
+    }
+
+    void AwardsManager (int score)
+    {
+        if (score >= 10 && score < 20)
+        {
+            GameObject newAward = Instantiate (awardPrefab, AwardsContainer);
+            newAward.GetComponent<Image>().sprite = awardsSprites [0]; 
+        }
+        else if (score >= 20)
+        {
+            GameObject newAward = Instantiate (awardPrefab, AwardsContainer);
+            newAward.GetComponent<Image>().sprite = awardsSprites [1]; 
+        }
+        
     }
 }
