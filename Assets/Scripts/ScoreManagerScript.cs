@@ -15,6 +15,7 @@ public class ScoreManagerScript : MonoBehaviour
     [SerializeField] Transform AwardsContainer;
     [SerializeField] GameObject awardPrefab;
     [SerializeField] SoundManagerScript soundManagerScript;
+    [SerializeField] Image newUIText;
 
     // [ContextMenu ("AddScore")]
     public void AddScore (int scoreToAdd)
@@ -35,12 +36,20 @@ public class ScoreManagerScript : MonoBehaviour
             PlayerPrefs.SetInt("bestScore", playerScore);
             PlayerPrefs.Save();
             UpdateBestScoreVisual(playerScore);
+            newUIText.enabled = true;
         }
         else
         {
             UpdateBestScoreVisual(bestScore);
         }
         
+    }
+
+    [ContextMenu ("deleteAllSaves")]
+    void deleteAllSaves ()
+    {
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
     }
 
     void UpdateScoreVisual(int score)

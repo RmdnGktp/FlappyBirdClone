@@ -3,6 +3,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
+using System.Collections;
+using UnityEngine.UI;
 
 public class BirdScript : MonoBehaviour
 {
@@ -18,7 +20,7 @@ public class BirdScript : MonoBehaviour
     [SerializeField] GameObject scoreContainer;
     [SerializeField] SoundManagerScript soundManagerScript;
     [SerializeField] float rotationSpeed;
-
+    [SerializeField] Image flashImage;
 
     void Update()
     {
@@ -62,10 +64,23 @@ public class BirdScript : MonoBehaviour
         }
     }
 
+     void OnTriggerEnter2D(Collider2D collision)
+    {
+        int layerIndex = LayerMask.NameToLayer ("Pipe");
+
+        if (collision.gameObject.layer == layerIndex)
+        {
+            scoreManager.AddScore(1);
+        }
+    }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
-        GameOver();
-
+        if (isAlive)
+        {
+           GameOver(); 
+        }
+        
         int layerIndex = LayerMask.NameToLayer ("Pipe");
         if (collision.gameObject.layer == layerIndex)
         {
@@ -82,26 +97,35 @@ public class BirdScript : MonoBehaviour
     void GameOver ()
     {
         soundManagerScript.playCollision();
+        StartCoroutine(FlashCoroutine());
         isAlive = false;
-        gameOverScene.SetActive(true);
         spawnPipe.cancelSpawn();
         gameObject.GetComponent<Animator>().enabled = false;
+        gameOverScene.SetActive(true);
         scoreManager.GameOverScore();
         scoreContainer.SetActive(false);
-    }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        int layerIndex = LayerMask.NameToLayer ("Pipe");
-
-        if (collision.gameObject.layer == layerIndex)
-        {
-            scoreManager.AddScore(1);
-        }
     }
 
     void playFallingSound ()
     {
         soundManagerScript.playFalling();
     }
+
+    IEnumerator FlashCoroutine ()
+    {   
+        flashImage.color = new Color(1, 1, 1, 1);
+        float t = 0f;
+
+        while (t < 1f)
+        {
+            t += Time.deltaTime * 5f;
+
+            float alpha = Mathf.Lerp(1f, 0f, t);
+            flashImage.color = new Color(1, 1, 1, alpha);
+
+            yield return null;
+        }
+    }
+
+    
 }
