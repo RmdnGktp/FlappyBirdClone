@@ -17,6 +17,7 @@ public class BirdScript : MonoBehaviour
     [SerializeField] ScoreManagerScript scoreManager;
     [SerializeField] GameObject scoreContainer;
     [SerializeField] SoundManagerScript soundManagerScript;
+    [SerializeField] float rotationSpeed;
 
 
     void Update()
@@ -30,11 +31,14 @@ public class BirdScript : MonoBehaviour
             StartGame();
             Jump();
         }
+
+        RotateBird(rotationSpeed);
     }
 
     void Jump ()
     {
        myRigidbody.linearVelocity = Vector2.up * flapStrength;
+       myRigidbody.rotation = 30f;
        soundManagerScript.playFlap();
     }
 
@@ -48,19 +52,56 @@ public class BirdScript : MonoBehaviour
         
     }
 
+    void RotateBird(float speed)
+    {
+        if (gameStarted)
+        {
+            float angle = myRigidbody.linearVelocity.y * speed;
+            angle = Mathf.Clamp(angle, -90f, 30f);
+            myRigidbody.rotation = angle;
+        }
+    }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         GameOver();
+
+        int layerIndex = LayerMask.NameToLayer ("Pipe");
+        if (collision.gameObject.layer == layerIndex)
+        {
+            Invoke("playFallingSound", 0.3f);
+        }
+
+        int layerIndexFloor = LayerMask.NameToLayer ("Floor");
+        if (collision.gameObject.layer == layerIndexFloor)
+        {
+            myRigidbody.simulated = false;
+        }
     }
 
     void GameOver ()
     {
+        soundManagerScript.playCollision();
         isAlive = false;
         gameOverScene.SetActive(true);
         spawnPipe.cancelSpawn();
         gameObject.GetComponent<Animator>().enabled = false;
         scoreManager.GameOverScore();
         scoreContainer.SetActive(false);
-        soundManagerScript.playCollision();
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        int layerIndex = LayerMask.NameToLayer ("Pipe");
+
+        if (collision.gameObject.layer == layerIndex)
+        {
+            scoreManager.AddScore(1);
+        }
+    }
+
+    void playFallingSound ()
+    {
+        soundManagerScript.playFalling();
     }
 }

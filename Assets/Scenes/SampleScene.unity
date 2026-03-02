@@ -128,10 +128,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5596066}
-  - component: {fileID: 5596065}
   - component: {fileID: 5596067}
+  - component: {fileID: 5596065}
   m_Layer: 0
-  m_Name: SoundManager
+  m_Name: AudioManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -155,6 +155,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2930f974ae63eb847b64fd3119b6a0e5, type: 3}
   - {fileID: 8300000, guid: 4385699815b33b0488c9d463f635a26f, type: 3}
   - {fileID: 8300000, guid: 50a43dfc8e4efa44c996363e0d1df753, type: 3}
+  birdScript: {fileID: 1190722949}
 --- !u!4 &5596066
 Transform:
   m_ObjectHideFlags: 0
@@ -375,8 +376,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 219867916}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.44288, y: 1.09396, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -385,7 +386,7 @@ Transform:
   - {fileID: 838139388}
   - {fileID: 535828257}
   - {fileID: 979477435}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1035543160}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &302529427
 GameObject:
@@ -969,7 +970,7 @@ GameObject:
   - component: {fileID: 535828257}
   - component: {fileID: 535828258}
   m_Layer: 0
-  m_Name: Flappy Bird_20
+  m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1292,12 +1293,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 803452157}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.44288, y: 1.09396, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1035543160}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &838139387
 GameObject:
@@ -1310,7 +1311,7 @@ GameObject:
   - component: {fileID: 838139388}
   - component: {fileID: 838139389}
   m_Layer: 0
-  m_Name: Flappy Bird_25
+  m_Name: Tap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1325,7 +1326,7 @@ Transform:
   m_GameObject: {fileID: 838139387}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.77, y: -0.44, z: 0}
+  m_LocalPosition: {x: 0.79, y: -0.44, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1401,7 +1402,7 @@ GameObject:
   - component: {fileID: 979477435}
   - component: {fileID: 979477436}
   m_Layer: 0
-  m_Name: Flappy Bird_24
+  m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1416,7 +1417,7 @@ Transform:
   m_GameObject: {fileID: 979477434}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.7, z: 0}
+  m_LocalPosition: {x: 0.03, y: -0.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1481,6 +1482,104 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &1035543159
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1035543160}
+  m_Layer: 0
+  m_Name: Environment
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1035543160
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035543159}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.44288, y: -1.09396, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 803452159}
+  - {fileID: 219867917}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1064619356
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1064619358}
+  - component: {fileID: 1064619357}
+  m_Layer: 0
+  m_Name: ScoreManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1064619357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064619356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2d1e50994b1b8b46b6a51780329d7b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScoreManagerScript
+  numberSprites:
+  - {fileID: -715180249054196061, guid: 3229a366038f9e34293ed8913a2571b0, type: 3}
+  - {fileID: 5316280331906963667, guid: 3229a366038f9e34293ed8913a2571b0, type: 3}
+  - {fileID: -2915684003741901922, guid: 3229a366038f9e34293ed8913a2571b0, type: 3}
+  - {fileID: 3856285495568662457, guid: 3229a366038f9e34293ed8913a2571b0, type: 3}
+  - {fileID: -8521441074487732660, guid: 3229a366038f9e34293ed8913a2571b0, type: 3}
+  - {fileID: 6753506287879428692, guid: 3229a366038f9e34293ed8913a2571b0, type: 3}
+  - {fileID: -2863547085622101388, guid: 3229a366038f9e34293ed8913a2571b0, type: 3}
+  - {fileID: 8360343725100061614, guid: 3229a366038f9e34293ed8913a2571b0, type: 3}
+  - {fileID: 659952162828938972, guid: 3229a366038f9e34293ed8913a2571b0, type: 3}
+  - {fileID: -1407624656945823627, guid: 3229a366038f9e34293ed8913a2571b0, type: 3}
+  awardsSprites:
+  - {fileID: -8404106759600213603, guid: 3229a366038f9e34293ed8913a2571b0, type: 3}
+  - {fileID: -3659440945728009773, guid: 3229a366038f9e34293ed8913a2571b0, type: 3}
+  digitPrefab: {fileID: 6953866553995420520, guid: 8a1622206502d1644b57d69ca0d874a6, type: 3}
+  scoreContainer: {fileID: 1127896889}
+  endGameScoreContainer: {fileID: 1280110361}
+  bestScoreContainer: {fileID: 302529428}
+  AwardsContainer: {fileID: 1410488300}
+  awardPrefab: {fileID: 3127789411316886935, guid: 46dc6143d7f130c40923f7700d1a994d, type: 3}
+  soundManagerScript: {fileID: 5596065}
+--- !u!4 &1064619358
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064619356}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1086069804
 GameObject:
   m_ObjectHideFlags: 0
@@ -1567,7 +1666,7 @@ GameObject:
   - component: {fileID: 1099318697}
   - component: {fileID: 1099318696}
   m_Layer: 0
-  m_Name: ButtonManager
+  m_Name: UIManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1814,7 +1913,6 @@ GameObject:
   - component: {fileID: 1190722950}
   - component: {fileID: 1190722952}
   - component: {fileID: 1190722949}
-  - component: {fileID: 1190722953}
   m_Layer: 3
   m_Name: Bird
   m_TagString: Untagged
@@ -1916,9 +2014,10 @@ MonoBehaviour:
   gameStarted: 0
   startSprites: {fileID: 219867916}
   gravityStrength: 1.5
-  scoreManager: {fileID: 1190722953}
+  scoreManager: {fileID: 1064619357}
   scoreContainer: {fileID: 1127896888}
   soundManagerScript: {fileID: 5596065}
+  rotationSpeed: 5
 --- !u!58 &1190722950
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1954,7 +2053,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.2
+  m_Radius: 0.22
 --- !u!50 &1190722951
 Rigidbody2D:
   serializedVersion: 5
@@ -1981,7 +2080,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 1
 --- !u!95 &1190722952
 Animator:
   serializedVersion: 7
@@ -2004,39 +2103,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1190722953
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1190722946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2d1e50994b1b8b46b6a51780329d7b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ScoreManagerScript
-  numberSprites:
-  - {fileID: -715180249054196061, guid: 3229a366038f9e34293ed8913a2571b0, type: 3}
-  - {fileID: 5316280331906963667, guid: 3229a366038f9e34293ed8913a2571b0, type: 3}
-  - {fileID: -2915684003741901922, guid: 3229a366038f9e34293ed8913a2571b0, type: 3}
-  - {fileID: 3856285495568662457, guid: 3229a366038f9e34293ed8913a2571b0, type: 3}
-  - {fileID: -8521441074487732660, guid: 3229a366038f9e34293ed8913a2571b0, type: 3}
-  - {fileID: 6753506287879428692, guid: 3229a366038f9e34293ed8913a2571b0, type: 3}
-  - {fileID: -2863547085622101388, guid: 3229a366038f9e34293ed8913a2571b0, type: 3}
-  - {fileID: 8360343725100061614, guid: 3229a366038f9e34293ed8913a2571b0, type: 3}
-  - {fileID: 659952162828938972, guid: 3229a366038f9e34293ed8913a2571b0, type: 3}
-  - {fileID: -1407624656945823627, guid: 3229a366038f9e34293ed8913a2571b0, type: 3}
-  awardsSprites:
-  - {fileID: -8404106759600213603, guid: 3229a366038f9e34293ed8913a2571b0, type: 3}
-  - {fileID: -3659440945728009773, guid: 3229a366038f9e34293ed8913a2571b0, type: 3}
-  digitPrefab: {fileID: 6953866553995420520, guid: 8a1622206502d1644b57d69ca0d874a6, type: 3}
-  scoreContainer: {fileID: 1127896889}
-  endGameScoreContainer: {fileID: 1280110361}
-  bestScoreContainer: {fileID: 302529428}
-  AwardsContainer: {fileID: 1410488300}
-  awardPrefab: {fileID: 3127789411316886935, guid: 46dc6143d7f130c40923f7700d1a994d, type: 3}
-  soundManagerScript: {fileID: 5596065}
 --- !u!1 &1280110360
 GameObject:
   m_ObjectHideFlags: 0
@@ -2284,7 +2350,7 @@ GameObject:
   - component: {fileID: 1457452410}
   - component: {fileID: 1457452409}
   - component: {fileID: 1457452411}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2399,7 +2465,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.03816414}
+  m_Offset: {x: 0, y: -0.0013358593}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2409,7 +2475,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 6.8, y: 2.203672}
+  m_Size: {x: 6.8, y: 2.2773285}
   m_EdgeRadius: 0
 --- !u!1 &1546068198
 GameObject:
@@ -2422,7 +2488,7 @@ GameObject:
   - component: {fileID: 1546068199}
   - component: {fileID: 1546068200}
   m_Layer: 0
-  m_Name: Flappy Bird_10
+  m_Name: GetReady
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2769,7 +2835,7 @@ GameObject:
   - component: {fileID: 1802248771}
   - component: {fileID: 1802248772}
   m_Layer: 0
-  m_Name: Flappy Bird_13
+  m_Name: GreyBird
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3224,12 +3290,12 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 619394802}
-  - {fileID: 803452159}
   - {fileID: 1190722948}
   - {fileID: 1457452410}
   - {fileID: 1568583558}
+  - {fileID: 1064619358}
+  - {fileID: 1099318697}
+  - {fileID: 5596066}
+  - {fileID: 1035543160}
   - {fileID: 1742529043}
   - {fileID: 40124113}
-  - {fileID: 1099318697}
-  - {fileID: 219867917}
-  - {fileID: 5596066}

@@ -12,6 +12,7 @@ public class PipeSpawnerScript : MonoBehaviour
         InvokeRepeating ("spawnPipe", 0f, spawnRate);
     }
 
+    [ContextMenu ("cancelSpawn")]
     public void cancelSpawn()
     {
         CancelInvoke();
@@ -22,6 +23,6 @@ public class PipeSpawnerScript : MonoBehaviour
         float maxHeight = transform.position.y + heightOffset;
         float minHeight = transform.position.y - heightOffset;
 
-        Instantiate (pipe, new Vector3 (transform.position.x, Random.Range(maxHeight,minHeight), transform.position.z), transform.rotation);
+        Instantiate (pipe, new Vector3 (transform.position.x, Random.Range(maxHeight,minHeight), transform.position.z), transform.rotation, gameObject.transform);
     }
 }

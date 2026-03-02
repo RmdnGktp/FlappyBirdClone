@@ -16,22 +16,12 @@ public class ScoreManagerScript : MonoBehaviour
     [SerializeField] GameObject awardPrefab;
     [SerializeField] SoundManagerScript soundManagerScript;
 
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        int layerIndex = LayerMask.NameToLayer ("Pipe");
-
-        if (collision.gameObject.layer == layerIndex)
-        {
-            AddScore(1);
-            soundManagerScript.playCoin();
-        }
-    }
-
-    [ContextMenu ("AddScore")]
+    // [ContextMenu ("AddScore")]
     public void AddScore (int scoreToAdd)
     {
         playerScore += scoreToAdd;
         UpdateScoreVisual(playerScore);
+        soundManagerScript.playCoin();
     }
 
     public void GameOverScore ()

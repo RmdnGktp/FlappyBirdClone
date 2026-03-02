@@ -3,6 +3,7 @@ using UnityEngine;
 public class SoundManagerScript : MonoBehaviour
 {
     [SerializeField] AudioClip[] audioClips;
+    [SerializeField] BirdScript birdScript;
 
     private AudioSource myAudioSource;
 
@@ -22,13 +23,15 @@ public class SoundManagerScript : MonoBehaviour
     }
 
     public void playCollision ()
-    {
-        myAudioSource.PlayOneShot(audioClips[2]);
+    {   
+        if (birdScript.isAlive)
+        {
+            myAudioSource.PlayOneShot(audioClips[2]);
+        }
     }
 
-    public void playDeath ()
+    public void playFalling ()
     {
-        // myAudioSource.PlayDelayed(10);
         myAudioSource.PlayOneShot(audioClips[3]);
     }
 
