@@ -22,11 +22,10 @@ public class BirdScript : MonoBehaviour
     [SerializeField] float rotationSpeed;
     [SerializeField] Image flashImage;
     [SerializeField] GameObject pauseMenu;
-    [SerializeField] ButtonManagerScript buttonManagerScript;
 
     void Update()
     {
-        if (buttonManagerScript.isPaused) return;
+        if (ButtonManagerScript.isPaused) return;
         
         if (Mouse.current.leftButton.wasPressedThisFrame && isAlive && gameStarted)
         {

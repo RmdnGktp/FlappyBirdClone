@@ -7,7 +7,7 @@ public class ButtonManagerScript : MonoBehaviour
     [SerializeField] GameObject playButton;
     [SerializeField] GameObject menuButton;
     [SerializeField] GameObject blackScreen;
-    public bool isPaused;
+    public static bool isPaused;
 
     public void Restart ()
     {
@@ -38,5 +38,6 @@ public class ButtonManagerScript : MonoBehaviour
     {
         SceneManager.LoadScene(0);
         Time.timeScale = 1f;
+        isPaused = false;
     }
 }
