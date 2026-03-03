@@ -21,9 +21,13 @@ public class BirdScript : MonoBehaviour
     [SerializeField] SoundManagerScript soundManagerScript;
     [SerializeField] float rotationSpeed;
     [SerializeField] Image flashImage;
+    [SerializeField] GameObject pauseMenu;
+    [SerializeField] ButtonManagerScript buttonManagerScript;
 
     void Update()
     {
+        if (buttonManagerScript.isPaused) return;
+        
         if (Mouse.current.leftButton.wasPressedThisFrame && isAlive && gameStarted)
         {
             Jump ();
@@ -51,6 +55,7 @@ public class BirdScript : MonoBehaviour
         myRigidbody.gravityScale = gravityStrength;
         spawnPipe.startSpawn();
         scoreContainer.SetActive(true);
+        pauseMenu.SetActive(true);
         
     }
 
@@ -104,6 +109,7 @@ public class BirdScript : MonoBehaviour
         gameOverScene.SetActive(true);
         scoreManager.GameOverScore();
         scoreContainer.SetActive(false);
+        pauseMenu.SetActive(false);
     }
 
     void playFallingSound ()
