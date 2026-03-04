@@ -11,7 +11,7 @@ public class ButtonManagerScript : MonoBehaviour
 
     public void Restart ()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void PauseGame ()
