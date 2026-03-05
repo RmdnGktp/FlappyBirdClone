@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FloorScrollScript : MonoBehaviour
 {
-    [SerializeField] float speed;
+    public float speed = 3f;
     [SerializeField] float width;
    
     void Update()

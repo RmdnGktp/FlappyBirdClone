@@ -14,8 +14,14 @@ public class ScoreManagerScript : MonoBehaviour
     [SerializeField] Transform bestScoreContainer;
     [SerializeField] Transform AwardsContainer;
     [SerializeField] GameObject awardPrefab;
-    [SerializeField] SoundManagerScript soundManagerScript;
+    SoundManagerScript soundManagerScript;
     [SerializeField] Image newUIText;
+
+    void Start()
+    {
+        soundManagerScript = FindFirstObjectByType<SoundManagerScript>();
+    }
+
 
     // [ContextMenu ("AddScore")]
     public void AddScore (int scoreToAdd)

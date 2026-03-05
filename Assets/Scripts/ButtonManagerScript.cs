@@ -1,5 +1,9 @@
+// using Microsoft.Unity.VisualStudio.Editor;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class ButtonManagerScript : MonoBehaviour
 {
@@ -8,10 +12,18 @@ public class ButtonManagerScript : MonoBehaviour
     [SerializeField] GameObject menuButton;
     [SerializeField] GameObject blackScreen;
     public static bool isPaused;
+    float fadeSpeed = 3f;
+    SoundManagerScript soundManagerScript;
+
+    void Start()
+    {
+        soundManagerScript = FindFirstObjectByType<SoundManagerScript>();
+        StartCoroutine(FadeIn());
+    } 
 
     public void Restart ()
-    {
-        SceneManager.LoadScene(1);
+    {     
+        StartCoroutine(FadeOut(1));
     }
 
     public void PauseGame ()
@@ -21,7 +33,7 @@ public class ButtonManagerScript : MonoBehaviour
         pauseButton.SetActive(false);
         playButton.SetActive(true);
         menuButton.SetActive(true);
-        blackScreen.SetActive(true);
+        blackScreen.GetComponent<Image>().color = new Color (0f, 0f, 0f, 0.6f);
     }
 
     public void ResumeGame ()
@@ -29,15 +41,41 @@ public class ButtonManagerScript : MonoBehaviour
         playButton.SetActive(false);
         pauseButton.SetActive(true);
         menuButton.SetActive(false);
-        blackScreen.SetActive(false);
+        blackScreen.GetComponent<Image>().color = new Color (0f, 0f, 0f, 0f);
         Time.timeScale = 1f;
         isPaused = false;
     }
 
     public void LoadMenu ()
     {
-        SceneManager.LoadScene(0);
+        StartCoroutine(FadeOut(0));
         Time.timeScale = 1f;
         isPaused = false;
+    }
+
+    public IEnumerator FadeIn()
+    {
+        float alpha = 1;
+        while (alpha > 0)
+        {
+            alpha -= Time.deltaTime * fadeSpeed;
+            blackScreen.GetComponent<Image>().color = new Color (0f, 0f, 0f, alpha);
+            yield return null;
+        }
+    }
+    
+    public IEnumerator FadeOut( int sceneNumber)
+    {   
+        soundManagerScript.playSwoosh();
+        
+        float alpha = 0;
+        while (alpha < 1)
+        {
+            alpha += Time.deltaTime * fadeSpeed;
+            blackScreen.GetComponent<Image>().color = new Color (0f, 0f, 0f, alpha);
+            yield return null;
+        }
+
+        SceneManager.LoadScene(sceneNumber);
     }
 }

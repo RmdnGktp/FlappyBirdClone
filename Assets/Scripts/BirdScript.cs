@@ -18,10 +18,17 @@ public class BirdScript : MonoBehaviour
     [SerializeField] float gravityStrength;
     [SerializeField] ScoreManagerScript scoreManager;
     [SerializeField] GameObject scoreContainer;
-    [SerializeField] SoundManagerScript soundManagerScript;
+    SoundManagerScript soundManagerScript;
     [SerializeField] float rotationSpeed;
     [SerializeField] Image flashImage;
     [SerializeField] GameObject pauseMenu;
+    [SerializeField] FloorScrollScript floorScrollScript;
+    float deadZoneY = 5.0f;
+
+    void Start()
+    {
+        soundManagerScript = FindFirstObjectByType<SoundManagerScript>();
+    }
 
     void Update()
     {
@@ -38,6 +45,12 @@ public class BirdScript : MonoBehaviour
         }
 
         RotateBird(rotationSpeed);
+
+        if (transform.position.y > deadZoneY)
+        {
+            GameOver();
+        }
+
     }
 
     void Jump ()
@@ -55,6 +68,7 @@ public class BirdScript : MonoBehaviour
         spawnPipe.startSpawn();
         scoreContainer.SetActive(true);
         pauseMenu.SetActive(true);
+        soundManagerScript.isAlive = true;
         
     }
 
@@ -103,12 +117,14 @@ public class BirdScript : MonoBehaviour
         soundManagerScript.playCollision();
         StartCoroutine(FlashCoroutine());
         isAlive = false;
+        soundManagerScript.isAlive = false;
         spawnPipe.cancelSpawn();
         gameObject.GetComponent<Animator>().enabled = false;
         gameOverScene.SetActive(true);
         scoreManager.GameOverScore();
         scoreContainer.SetActive(false);
         pauseMenu.SetActive(false);
+        floorScrollScript.speed = 0f;
     }
 
     void playFallingSound ()

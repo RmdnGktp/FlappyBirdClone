@@ -15,6 +15,5 @@ public class TextGlidingScript : MonoBehaviour
     {
         float newY = startY + Mathf.Sin(Time.time * frequency) * amplitude;
         transform.position = new Vector3(transform.position.x, newY, transform.position.z);
-        
     }
 }
