@@ -11,7 +11,6 @@ public class BirdScript : MonoBehaviour
     [SerializeField] Rigidbody2D myRigidbody;
     [SerializeField] float flapStrength;
     public bool isAlive = true;
-    [SerializeField] GameObject gameOverScene;
     [SerializeField] PipeSpawnerScript spawnPipe;
     public bool gameStarted = false;
     [SerializeField] GameObject startSprites;
@@ -19,6 +18,7 @@ public class BirdScript : MonoBehaviour
     [SerializeField] ScoreManagerScript scoreManager;
     [SerializeField] GameObject scoreContainer;
     SoundManagerScript soundManagerScript;
+    [SerializeField] GameOverBoardScript gameOverBoardScript;
     [SerializeField] float rotationSpeed;
     [SerializeField] Image flashImage;
     [SerializeField] GameObject pauseMenu;
@@ -120,7 +120,7 @@ public class BirdScript : MonoBehaviour
         soundManagerScript.isAlive = false;
         spawnPipe.cancelSpawn();
         gameObject.GetComponent<Animator>().enabled = false;
-        gameOverScene.SetActive(true);
+        gameOverBoardScript.isGameOver();
         scoreManager.GameOverScore();
         scoreContainer.SetActive(false);
         pauseMenu.SetActive(false);
