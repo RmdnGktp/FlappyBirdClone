@@ -3,9 +3,14 @@ using UnityEngine;
 public class SoundManagerScript : MonoBehaviour
 {
     [SerializeField] AudioClip[] audioClips;
-    [SerializeField] BirdScript birdScript;
-
+    public bool isAlive = true;
     private AudioSource myAudioSource;
+    // public static SoundManagerScript instance;
+
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    } 
 
     void Start()
     {
@@ -24,7 +29,7 @@ public class SoundManagerScript : MonoBehaviour
 
     public void playCollision ()
     {   
-        if (birdScript.isAlive)
+        if (isAlive)
         {
             myAudioSource.PlayOneShot(audioClips[2]);
         }
