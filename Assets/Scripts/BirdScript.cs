@@ -46,11 +46,10 @@ public class BirdScript : MonoBehaviour
 
         RotateBird(rotationSpeed);
 
-        if (transform.position.y > deadZoneY)
+        if (transform.position.y > deadZoneY && isAlive)
         {
             GameOver();
         }
-
     }
 
     void Jump ()

@@ -63,7 +63,7 @@ public class GameOverBoardScript: MonoBehaviour
         while (t < 1f)
         {
             t += Time.deltaTime * speed;
-            float newPositionY = Mathf.Lerp (boardStartPosition, boardCurrentPosition, t);
+            float newPositionY = Mathf.SmoothStep (boardStartPosition, boardCurrentPosition, t);
             gameOverBoard.GetComponent<RectTransform>().anchoredPosition = new Vector2 (0, newPositionY);
             
             yield return null;
