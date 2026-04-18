@@ -53,7 +53,7 @@ public class GameOverBoardScript: MonoBehaviour
             yield return null;
         }
 
-        Debug.Log ("Text Animation");
+        // Debug.Log ("Text Animation");
         yield return new WaitForSeconds(0.5f);
 
         soundManagerScript.playSwoosh();
@@ -69,11 +69,10 @@ public class GameOverBoardScript: MonoBehaviour
             yield return null;
         }
         
-        Debug.Log ("Board Animation");
+        // Debug.Log ("Board Animation");
         yield return new WaitForSeconds(0.5f);
 
         gameOverButtons.SetActive(true);
-        Debug.Log ("Show Buttons");
         yield return null;
 
     }
