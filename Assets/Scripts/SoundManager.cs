@@ -6,11 +6,26 @@ public class SoundManagerScript : MonoBehaviour
     public bool isAlive = true;
     private AudioSource myAudioSource;
     // public static SoundManagerScript instance;
+    static SoundManagerScript instance;
 
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        ManageSingleton();
     } 
+
+    void ManageSingleton()
+    {
+        if (instance != null)
+        {
+            gameObject.SetActive(false);
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
 
     void Start()
     {
